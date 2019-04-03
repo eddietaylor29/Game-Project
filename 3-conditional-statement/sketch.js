@@ -14,7 +14,15 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background("orange");
+  fill("grey")
+  rect(0,200,500,200)
+  fill("black");
+  rect(0,100,498,200);
+  fill("yellow");
+  rect(0,195,500,5);
+  rect(0,205,500,5);
+
 
   me.drawMe();
   me.moveMe();
@@ -44,25 +52,32 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("green");
-        strokeWeight(3);
-    		fill("blue");
-		    ellipse(this.x,this.y,20,20);
+    		stroke("red");
+        strokeWeight(2);
+    		fill("black");
+		    rect(this.x,this.y,20,20);
         line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
-        line(this.x, this.y+15, this.x-10, this.y+25);
+        line(this.x, this.y+40, this.x-20, this.y+60); //back left leg
+        line(this.x, this.y+40, this.x+10, this.y+50); // right leg
+        line(this.x+10, this.y+50, this.x+5, this.y+60);//right leg
         line(this.x-10, this.y+25, this.x+10, this.y+35);
-	}
+        fill("blue");
+        stroke("black");
+        rect(this.x+5, this.y-20, 10,10);
+        ellipse(this.x+10,this.y-7,20,10);
+
+
+}
+
+
 
 	moveMe(){
     if (keyIsDown(UP_ARROW)) { //if you hold the up arrow, move up by speed
-       this.y -= this.speed;
+       this.y -= this.speed+5;
     }
 
     if (keyIsDown(DOWN_ARROW)) { // if you hold the down arrow, move down by speed
-        this.y += this.speed;
+        this.y += this.speed+10;
     }
 	}
 
@@ -87,8 +102,13 @@ class Ball {
 	drawBall(){
     	stroke(0);
       strokeWeight(1);
-    	fill("red");
-		  ellipse(this.x,this.y,10,10);
+    	fill("grey");
+		  ellipse(this.x,this.y,20,15);
+      fill("blue");
+      rect(this.x-13,this.y-13,10,10);
+      fill("dark grey")
+      ellipse(this.x+11,this.y,5,11)
+      ellipse(this.x,this.y+8,9,16)
 	}
 
 	//update the location of the ball, so it moves across the screen
@@ -99,7 +119,7 @@ class Ball {
 
 	//if the ball hits the person, change the speed value to negative (send it in the opposite direction)
   	bounceBall(){
-    		if (this.x >= me.x-15 && this.x <= me.x+15 && this.y > me.y-40 && this.y < me.y+40){
+    		if (this.x >= me.x-30 && this.x <= me.x+5 && this.y > me.y-40 && this.y < me.y+40){
       			this.speed = -this.speed;
     		}
   	}
