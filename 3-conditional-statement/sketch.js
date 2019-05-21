@@ -10,6 +10,7 @@ function setup() {
   //draw the variable bumpers
 
     let bumper1 = new Bumper(100,400,0,.75);
+    //hi
     bumpers.push(bumper1);
     console.log(bumper1);
 
